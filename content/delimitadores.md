@@ -63,7 +63,8 @@ DELIMITER $$
 CREATE PROCEDURE nome_procedure()
 BEGIN
   -- statements
-END $$
+END;
+$$
 
 DELIMITER ;
 ```

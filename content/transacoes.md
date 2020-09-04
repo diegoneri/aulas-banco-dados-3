@@ -1,6 +1,6 @@
 # Transações
 
-[📽 Veja esta vídeo-aula no Youtube](_EM BREVE_)
+[📽 Veja esta vídeo-aula no Youtube](https://youtu.be/NAwtsg_2xOA "Banco de Dados III | 02 - Transações")
 
 ## O que é uma transação
 
@@ -78,7 +78,7 @@ INSERT INTO usuario (user_name, email)
      VALUES ('diego', 'diego.neri@etec.sp.gov.br');
 
 INSERT INTO endereco (endereco, cidade, cep, usuario_id)
-     VALUES ('Avenida Monteiro Lobato, 8000', 'Mongaguá', '11730-000', LAST_INSERT_ID());
+     VALUES ('Avenida Monteiro Lobato, 8000', 'Mongaguá', '11730000', LAST_INSERT_ID());
 ```
 
 💡 [LAST_INSERT_ID()](<https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id>)
@@ -150,7 +150,7 @@ INSERT INTO usuario (user_name, email)
      VALUES ('maria', 'maria.etec@etec.sp.gov.br');
 
 INSERT INTO endereco (endereco, cidade, cep, usuario_id)
-     VALUES ('Avenida São Paulo, S/N', 'São Roque', '13810-220', LAST_INSERT_ID());
+     VALUES ('Avenida São Paulo, S/N', 'São Roque', '13810220', LAST_INSERT_ID());
 
 COMMIT;
 ```
@@ -164,7 +164,7 @@ INSERT INTO usuario (user_name, email)
      VALUES ('carlos', 'carlos.fonseca@etec.sp.gov.br');
 
 INSERT INTO endereco (endereco, cidade, cep, usuario_id)
-     VALUES ('Rua Treze de Abril, 122', 'Santos', '11070-000', LAST_INSERT_ID());
+     VALUES ('Rua Treze de Abril, 122', 'Santos', '11070000', LAST_INSERT_ID());
 
 ROLLBACK;
 ```

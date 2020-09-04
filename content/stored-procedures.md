@@ -1,6 +1,6 @@
-# MySQL - Stored Procedures
+# MySQL - _Stored Procedures_
 
-* 📽 Veja esta vídeo-aula no Youtube (_EM BREVE_)
+* [📽 Veja esta vídeo-aula no Youtube](https://youtu.be/NAwtsg_2xOA "Banco de Dados III | 04 - Stored Procedures")
 * [📚 Referência oficial](https://dev.mysql.com/doc/refman/8.0/en/stored-programs-defining.html "Documentação oficial - Definindo um programa armazenado")
 * [⁉ FAQ - _Frequently Asked Questions_](https://dev.mysql.com/doc/refman/8.0/en/faqs-stored-procs.html "Perguntas gerais")
 
@@ -10,7 +10,7 @@
 * [Exemplo de criação](#Exemplo-de-criação "Exemplo de criação")
 * [Executando uma Stored Procedure](#Executando-uma-Stored-Procedure "Executando uma Stored Procedure")
 
-## Sintaxe
+## Sintaxe básica
 
 <https://dev.mysql.com/doc/refman/8.0/en/stored-routines-syntax.html>
 <https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html>
@@ -20,7 +20,7 @@
 ```sql
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS nomeproc$$
+DROP PROCEDURE IF EXISTS nomeproc;
 
 CREATE PROCEDURE nome_procedure(<parametros, ...>)
 
@@ -49,7 +49,7 @@ Então, informe os comandos para a criação:
 ```sql
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS hello_world$$
+DROP PROCEDURE IF EXISTS hello_world;
 
 CREATE PROCEDURE hello_world()
 BEGIN

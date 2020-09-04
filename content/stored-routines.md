@@ -1,6 +1,6 @@
 # Procedimentos armazenados em bloco
 
-* [📽 Veja esta vídeo-aula no Youtube](_EM BREVE_)
+* [📽 Veja esta vídeo-aula no Youtube](https://youtu.be/YMCCyQGYjN8 "Banco de Dados III - 03 - Rotinas")
 * [📚 Referência oficial - _Stored Objects_](https://dev.mysql.com/doc/refman/8.0/en/stored-objects.html "Documentação oficial - Stored Objects")
 * [📚 Referência oficial - _Stored Routines_](https://dev.mysql.com/doc/refman/8.0/en/stored-routines.html "Documentação oficial - Stored Routines")
 * [⁉ FAQ - _Frequently Asked Questions_](https://dev.mysql.com/doc/refman/8.0/en/faqs-stored-procs.html "Perguntas gerais")
