@@ -56,7 +56,7 @@ Para criar seu ambiente de trabalho, baixe as ferramentas e instale em seu compu
 * [📺][👨‍🏫 Delimitadores](content/delimitadores.md "Delimitadores")
 * [📺][👨‍🏫 _Stored Procedures_](content/stored-procedures.md "Stored Procedures")
 * [📺][👨‍🏫 _Stored Functions_](content/stored-functions.md "Stored Functions")
-* [📺][👨‍🏫 Cursores](content/cursores.md "Stored Functions")
+* [📺][👨‍🏫 Cursores](content/cursores.md "Cursores")
 * [📺][👨‍🏫 _Triggers_](content/triggers.md "Triggers")
 
 ### 👁 Administração de Banco de dados
