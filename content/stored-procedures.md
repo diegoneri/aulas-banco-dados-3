@@ -1,6 +1,6 @@
 # MySQL - _Stored Procedures_
 
-* [📽 Veja esta vídeo-aula no Youtube](https://youtu.be/NAwtsg_2xOA "Banco de Dados III | 04 - Stored Procedures")
+* [📽 Veja esta vídeo-aula no Youtube](https://youtu.be/W09O_TAXBvk "Banco de Dados III | 04 - Stored Procedures")
 * [📚 Referência oficial](https://dev.mysql.com/doc/refman/8.0/en/stored-programs-defining.html "Documentação oficial - Definindo um programa armazenado")
 * [⁉ FAQ - _Frequently Asked Questions_](https://dev.mysql.com/doc/refman/8.0/en/faqs-stored-procs.html "Perguntas gerais")
 
