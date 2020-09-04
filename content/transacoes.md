@@ -29,6 +29,28 @@ Neste cenário, temos o modelo relacional abaixo:
 +-----------------------------+                   +--------------------------------+
 ```
 
+```sql
+CREATE DATABASE bd3;
+
+USE bd3;
+
+CREATE TABLE usuario(
+    usuario_id INT AUTO_INCREMENT 
+  , user_name  VARCHAR(30)
+  , email      VARCHAR(100)
+  , PRIMARY KEY (usuario_id) 
+);
+
+CREATE TABLE endereco(
+    endereco_id INT AUTO_INCREMENT PRIMARY KEY
+  , endereco    VARCHAR(200)
+  , cidade      VARCHAR(100)
+  , cep         VARCHAR(8)
+  , usuario_id  INT 
+  , FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
+);
+```
+
 Dado que um usuário precisa ser cadastrado no mesmo momento que o endereço, como garantir que ambos os cadastros foram efetuados, dados os passos acima?
 
 Tecnicamente falando, são dois inserts que ocorrem, um em cada tabela.
@@ -40,10 +62,11 @@ Com uma transação que garanta a integridade da operação, tratando as operaç
 
 💡 Veja mais sobre ACID:
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=NtOBPtlnK8w" target="_blank"><img src="http://img.youtube.com/vi/NtOBPtlnK8w/0.jpg" alt="ACID = Alura" width="240" height="180" border="10" />
+* Alura - O que é ACID?
+[![Alura - o que é ACID?](https://img.youtube.com/vi/NtOBPtlnK8w/0.jpg)](https://www.youtube.com/watch?v=NtOBPtlnK8w)
 
-- [Wikipedia](https://pt.wikipedia.org/wiki/ACID), e;
-- [Leitura rápida](https://medium.com/opensanca/o-que-%C3%A9-acid-59b11a81e2c6), de Pedro Barros, no Medium.
+* [Wikipedia](https://pt.wikipedia.org/wiki/ACID), e;
+* [Leitura rápida](https://medium.com/opensanca/o-que-%C3%A9-acid-59b11a81e2c6), de Pedro Barros, no Medium.
 
 ## Contexto transacional
 
@@ -143,4 +166,47 @@ INSERT INTO endereco (endereco, cidade, cep, usuario_id)
      VALUES ('Rua Treze de Abril, 122', 'Santos', '11070-000', LAST_INSERT_ID());
 
 ROLLBACK;
+```
+
+### Exemplo do vídeo
+
+```sql
+#Cópias disponíveis
+SELECT i.inventory_id
+     , f.film_id
+     , f.title
+  FROM inventory i
+  JOIN store s USING (store_id)
+  JOIN film f  USING (film_id)
+ WHERE s.store_id = 1
+   AND f.title LIKE 'G%'
+   AND NOT EXISTS (SELECT r.rental_id 
+                     FROM rental r
+                    WHERE r.inventory_id = i.inventory_id
+                      AND r.return_date IS NULL)
+ LIMIT 15, 20;
+
+#FAZENDO UMA TRANSAÇÃO
+SELECT @@autocommit;
+
+SET AUTOCOMMIT = 0;
+
+BEGIN;
+
+INSERT INTO rental (inventory_id, customer_id, staff_id)
+     VALUES (1598, 1, 1);
+
+UPDATE rental r 
+    SET r.return_date = DATE_ADD(r.rental_date
+                                ,  INTERVAL
+                                        (SELECT rental_duration
+                                           FROM film f
+                                          WHERE f.film_id = 1)
+                                   DAY)
+WHERE r.rental_id = LAST_INSERT_ID();
+
+#ROLLBACK;
+COMMIT;
+
+SET AUTOCOMMIT = 1;
 ```

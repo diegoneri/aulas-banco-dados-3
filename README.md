@@ -48,11 +48,16 @@ Para criar seu ambiente de trabalho, baixe as ferramentas e instale em seu compu
 
 ### 🐢 Transações
 
-* [📺][👨‍🏫][Transações em banco de dados relacional](content/transacoes.md)
+* [📺][👨‍🏫 Transações em banco de dados relacional](content/transacoes.md "Transações em banco de dados relacional")
 
 ### 🔢 Procedimentos
 
-* _Em breve_
+* [📺][👨‍🏫 Procedimentos armazenados](content/stored-routines.md "Procedimentos armazenados")
+* [📺][👨‍🏫 Delimitadores](content/delimitadores.md "Delimitadores")
+* [📺][👨‍🏫 _Stored Procedures_](content/stored-procedures.md "Stored Procedures")
+* [📺][👨‍🏫 _Stored Functions_](content/stored-functions.md "Stored Functions")
+* [📺][👨‍🏫 Cursores](content/cursores.md "Stored Functions")
+* [📺][👨‍🏫 _Triggers_](content/triggers.md "Triggers")
 
 ### 👁 Administração de Banco de dados
 
@@ -67,6 +72,8 @@ Para criar seu ambiente de trabalho, baixe as ferramentas e instale em seu compu
 * _Em breve_
 
 ## Outros
+
+* _Em breve_
 
 ### 📜 Documentação
 
