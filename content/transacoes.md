@@ -63,6 +63,7 @@ Com uma transação que garanta a integridade da operação, tratando as operaç
 💡 Veja mais sobre ACID:
 
 * Alura - O que é ACID?
+
 [![Alura - o que é ACID?](https://img.youtube.com/vi/NtOBPtlnK8w/0.jpg)](https://www.youtube.com/watch?v=NtOBPtlnK8w)
 
 * [Wikipedia](https://pt.wikipedia.org/wiki/ACID), e;
@@ -80,7 +81,7 @@ INSERT INTO endereco (endereco, cidade, cep, usuario_id)
      VALUES ('Avenida Monteiro Lobato, 8000', 'Mongaguá', '11730-000', LAST_INSERT_ID());
 ```
 
-💡 (LAST_INSERT_ID())[<https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id>]
+💡 [LAST_INSERT_ID()](<https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id>)
 
 Mas, como garantir que ambos estejam em uma mesma transação?
 `Tratando os comandos como únicos, contendo-os a um bloco de comandos`
@@ -90,7 +91,7 @@ Mas, como garantir que ambos estejam em uma mesma transação?
 ---
 
 ```Se alguma operação dentro de uma transação falhar, TODA a transação falhará e deve ser revertida no banco de dados. 
-Caso todas as operações tenham sucesso, elas devem ser efetivada no banco de dados
+Caso todas as operações tenham sucesso, elas devem ser efetivadas no banco de dados
 ```
 
 ---
