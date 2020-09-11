@@ -1,6 +1,6 @@
 # MySQL - Sintaxes _Stored Routines_
 
-* 📽 Veja esta vídeo-aula no Youtube(_EM BREVE_)
+* [📽 Veja esta vídeo-aula no Youtube](https://youtu.be/fVBcOw8ps3E)
 * [📚 Referência oficial](https://dev.mysql.com/doc/refman/8.0/en/sql-compound-statements.html "Documentação oficial - Compound Statement Syntax")
 * [⁉ FAQ - _Frequently Asked Questions_](https://dev.mysql.com/doc/refman/8.0/en/faqs-stored-procs.html "Perguntas gerais")
 
