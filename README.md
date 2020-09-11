@@ -55,6 +55,7 @@ Para criar seu ambiente de trabalho, baixe as ferramentas e instale em seu compu
 * [📺][👨‍🏫 Procedimentos armazenados](content/stored-routines.md "Procedimentos armazenados")
 * [📺][👨‍🏫 Delimitadores](content/delimitadores.md "Delimitadores")
 * [📺][👨‍🏫 _Stored Procedures_](content/stored-procedures.md "Stored Procedures")
+* [📺][👨‍🏫 Sintaxes - _Stored Routines_](content/sintaxes-stored-routines.md "Sintaxes - Stored Routines")
 * [📺][👨‍🏫 _Stored Functions_](content/stored-functions.md "Stored Functions")
 * [📺][👨‍🏫 Cursores](content/cursores.md "Cursores")
 * [📺][👨‍🏫 _Triggers_](content/triggers.md "Triggers")
