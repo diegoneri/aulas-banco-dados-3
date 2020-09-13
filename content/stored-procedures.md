@@ -20,7 +20,7 @@
 ```sql
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS nomeproc;
+DROP PROCEDURE IF EXISTS nome_procedure;
 
 CREATE PROCEDURE nome_procedure(<parametros, ...>)
 
@@ -37,6 +37,8 @@ DELIMITER ;
 ```sql
 CALL nome_procedure(<parametros, ...>)
 ```
+
+Obs: a execução normalmente é feita em outros locais, como por exemmplo, dentro de uma outra FUNCTION ou PROCEDURE.
 
 ## Exemplo de criação
 
