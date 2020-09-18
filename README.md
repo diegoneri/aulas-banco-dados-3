@@ -74,7 +74,7 @@ Para criar seu ambiente de trabalho, baixe as ferramentas e instale em seu compu
 
 ## Outros
 
-* _Em breve_
+* [📜 Dicionário de dados - Sakila DB](https://dataedo.com/samples/html/Sakila/doc/Sakila_8/home.html)
 
 ### 📜 Documentação
 

@@ -255,6 +255,33 @@ END;
 $$
 ```
 
+ou
+
+```sql
+DELIMITER $$
+DROP PROCEDURE IF EXISTS cidades_do_pais$$
+CREATE PROCEDURE cidades_do_pais(IN pais VARCHAR(50))
+BEGIN
+   DECLARE v_country_id smallint;
+   
+   IF (pais = '') THEN
+      SELECT c.city
+        FROM city c;
+   ELSE
+	  SELECT c1.country_id
+        INTO v_country_id
+        FROM country c1
+       WHERE c1.country = pais;
+       
+      SELECT c.city
+        FROM city c
+       WHERE c.country_id = v_country_id;
+       
+   END IF;
+END;
+$$
+```
+
 #### Execução - IF
 
 ```sql
@@ -408,3 +435,42 @@ select @qtde;
 ```
 
 ![Execução While..Do](image/011.gif)
+
+### Exemplo da aula síncrona
+
+```sql
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS sp_cria_endereco$$
+
+CREATE PROCEDURE sp_cria_endereco(IN p_email VARCHAR(100)
+							    , IN p_endereco VARCHAR(200)
+                                , IN p_cidade VARCHAR(100)
+                                , IN p_cep VARCHAR(8)
+                                , OUT p_endereco_id INT)
+BEGIN
+	# USAR EMAIL PARA VALIDAR SE USUÁRIO EXISTE
+	DECLARE v_usuario_id INT DEFAULT 0;
+
+	SELECT usuario_id
+      INTO v_usuario_id
+      FROM usuario u 
+     WHERE u.email = p_email;
+    
+    # SE USUÁRIO EXISTIR, UTILIZÁ-LO PARA CRIAR UM NOVO ENDEREÇO
+	IF (v_usuario_id <= 0) THEN
+	   SELECT CONCAT('O e-mail ', p_email, ' não possui usuário associado') MSG_ERRO;
+       SET p_endereco_id = -1;
+    ELSE
+		START TRANSACTION;
+			INSERT INTO endereco(endereco, cidade, cep, usuario_id)
+				 VALUES (p_endereco, p_cidade, p_cep, v_usuario_id);
+	    COMMIT;
+        SET p_endereco_id = LAST_INSERT_ID();
+	END IF;
+    
+END;
+$$
+
+DELIMITER ;
+```
