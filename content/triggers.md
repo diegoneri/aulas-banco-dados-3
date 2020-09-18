@@ -47,18 +47,6 @@ Triggers não são ativados por ações de chaves-estrangeiras (ON UPDATE CASCAD
 
 ## Sintaxe básica
 
-
 ### Sintaxe de criação
 
-
-
-![Criação de Function](image/013.gif)
-
 ### Exemplos de execução
-
-```sql
-SELECT hello_world('Diego')
-     , hello_world_lang('Neri', 'BRA');
-```
-
-![Execução de Functions](image/014.gif)
