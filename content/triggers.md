@@ -5,17 +5,11 @@
 * [⁉ FAQ - _Frequently Asked Questions_](https://dev.mysql.com/doc/refman/8.0/en/faqs-triggers.html "Perguntas gerais")
 
 Índice
-* [Conceito](#Conceito "Conceito")
 
-* [Sintaxe básica](#Sintaxe-básica "Sintaxe básica")
-  * [Sintaxe de criação](#Sintaxe-de-criação "Sintaxe de criação")
-  * [Sintaxe de criação](#Sintaxe-de-criação "Sintaxe de criação")
-    * [(NOT) DETERMINISTIC](#(NOT)-DETERMINISTIC "(NOT) DETERMINISTIC")
-    * [Parâmetro log_bin_trust_function_creators](#Parâmetro-log_bin_trust_function_creators "Parâmetro log_bin_trust_function_creators")
-  * [Sintaxe de execução](#Sintaxe-de-execução "Sintaxe de execução")
-* [Exemplo](#Exemplo "Exemplo")
-  * [Exemplo de criação](#Exemplo-de-criação "Exemplo de criação")
-  * [Exemplos de execução](#Exemplos-de-execução "Exemplos de execução")
+* [Conceito](#Conceito "Conceito")
+* [Valores _NEW_ e _OLD_](#Valores-_NEW_-e-_OLD_ "Valores _NEW_ e _OLD_")
+* [Sintaxe](#Sintaxe "Sintaxe")
+* [Exemplos](#Exemplos "Exemplos")
 
 ## Conceito
 
@@ -45,8 +39,70 @@ Triggers não são ativados por ações de chaves-estrangeiras (ON UPDATE CASCAD
 * _DELETE_: o operador OLD.nome_coluna nos permite verificar o valor excluído ou a ser excluído. NEW.nome_coluna não está disponível.
 * _UPDATE_: tanto OLD.nome_coluna quanto NEW.nome_coluna estão disponíveis, antes (BEFORE) ou depois (AFTER) da atualização de uma linha.
 
-## Sintaxe básica
+## Sintaxe
 
-### Sintaxe de criação
+```sql
+DELIMITER $$
+DROP TRIGGER IF EXISTS NOME_TRIGGER$$
+CREATE TRIGGER NOME_TRIGGER [BEFORE|AFTER] [INSERT|DELETE|UPDATE] ON TABELA
+FOR EACH ROW
+BEGIN
+  #PROCEDIMENTOS
+END;
+$$
+```
 
-### Exemplos de execução
+## Exemplos
+
+### Ao criar uma conta, normalizar saldos
+
+```sql
+DELIMITER $$
+DROP TRIGGER IF EXISTS t_nova_conta$$
+CREATE TRIGGER t_nova_conta BEFORE INSERT ON conta
+FOR EACH ROW
+BEGIN
+   IF (NEW.saldo < 0) THEN
+      SET NEW.saldo = 0;
+   END IF;
+END;
+$$
+```
+
+### Ao criar uma conta, registrar abertura
+
+```sql
+DELIMITER $$
+DROP TRIGGER IF EXISTS t_registra_nova_conta$$
+CREATE TRIGGER t_registra_nova_conta AFTER INSERT ON conta
+FOR EACH ROW
+BEGIN
+   INSERT INTO movimentacao VALUES
+      (NEW.numero_conta, NOW(), NEW.saldo, CONCAT('Conta ', NEW.numero_conta, ' aberta com ', NEW.saldo));
+END;
+$$
+```
+
+### Ao atualizar uma conta, registrar alteração
+
+```sql
+DELIMITER $$
+DROP TRIGGER IF EXISTS t_altera_conta$$
+CREATE TRIGGER t_altera_conta AFTER UPDATE ON conta
+FOR EACH ROW
+BEGIN
+   INSERT INTO movimentacao VALUES
+      (NEW.numero_conta
+      , NOW()
+      , NEW.saldo
+      , CONCAT('Alteração manual de dados em '
+               , NEW.numero_conta
+               , '. Saldo anterior: '
+               , OLD.saldo
+               , '. Saldo atual: '
+               , NEW.saldo
+               )
+      );
+END;
+$$
+```
