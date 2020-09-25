@@ -70,7 +70,7 @@ Para criar seu ambiente de trabalho, baixe as ferramentas e instale em seu compu
 
 ## 🥋 Exercícios
 
-* _Em breve_
+* 💪🏼 [Procedimentos](exercises/02-procedimentos.md)
 
 ## Outros
 
