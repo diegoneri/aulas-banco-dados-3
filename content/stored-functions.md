@@ -15,6 +15,9 @@
 * [Exemplo](#Exemplo "Exemplo")
   * [Exemplo de criação](#Exemplo-de-criação "Exemplo de criação")
   * [Exemplos de execução](#Exemplos-de-execução "Exemplos de execução")
+* [Exemplo prático - calcular idade](#Exemplo-prático---calcular-idade)
+  * [Criação da function](#Criação-da-function)  
+  * [Execução da function](#Execução-da-function)
 
 ## Sintaxe básica
 
@@ -28,7 +31,7 @@ DELIMITER $$
 
 DROP FUNCTION IF EXISTS nome_function;
 
-CREATE FUNCTION nome_procedure(<parametros, ...>) RETURNS <TIPO_RETORNO>
+CREATE FUNCTION nome_function(<parametros, ...>) RETURNS <TIPO_RETORNO>
 [<(NOT) DETERMINISTIC>]
 BEGIN
    /*comandos;*/
@@ -124,3 +127,77 @@ SELECT hello_world('Diego')
 ```
 
 ![Execução de Functions](image/014.gif)
+
+## Exemplo prático - calcular idade
+
+### Criação da function
+
+```sql
+DELIMITER $$
+DROP FUNCTION IF EXISTS sf_calcular_idade $$
+CREATE FUNCTION sf_calcular_idade(p_data DATE) RETURNS SMALLINT
+BEGIN
+   DECLARE v_ano SMALLINT;
+   DECLARE v_mes SMALLINT;
+   DECLARE v_dia SMALLINT;
+
+   DECLARE v_data_atual DATE;
+   DECLARE v_ano_atual SMALLINT;
+   DECLARE v_mes_atual SMALLINT;
+   DECLARE v_dia_atual SMALLINT;
+
+   DECLARE v_idade SMALLINT;
+
+   SELECT YEAR(p_data)
+     INTO v_ano;
+   SELECT MONTH(p_data)
+     INTO v_mes;
+   SELECT DAY(p_data)
+     INTO v_dia;
+
+    SET v_data_atual = CURRENT_DATE();
+    SET v_ano_atual = YEAR(v_data_atual);
+    SET v_mes_atual = MONTH(v_data_atual);
+    SET v_dia_atual = DAY(v_data_atual);
+
+   IF ( v_mes_atual > v_mes ) THEN
+      SELECT ( v_ano_atual - v_ano )
+        INTO v_idade;
+   ELSEIF ( v_mes_atual < v_mes ) THEN
+      SELECT ( ( v_ano_atual - v_ano ) -1 )
+        INTO v_idade;
+   ELSE
+      IF ( v_dia_atual >= v_dia ) THEN
+         SELECT ( v_ano_atual - v_ano )
+           INTO v_idade;
+      ELSE
+         SELECT ( ( v_ano_atual - v_ano ) -1 )
+           INTO v_idade;
+      END IF;
+   END IF;
+   RETURN v_idade;
+END $$
+```
+
+ou
+
+```sql
+DELIMITER $$
+DROP FUNCTION IF EXISTS sf_calcular_idade $$
+CREATE FUNCTION sf_calcular_idade(p_data DATE) RETURNS SMALLINT
+BEGIN
+   RETURN TIMESTAMPDIFF (YEAR,p_data,CURDATE());
+END $$
+```
+
+Referência: <https://dev.mysql.com/doc/refman/8.0/en/date-calculations.html>
+
+### Execução da function
+
+```sql
+SELECT SF_CALCULAR_IDADE('1990-09-25') as 'Aniversariante'
+     , SF_CALCULAR_IDADE('1990-06-21') as 'Comemorado'
+     , SF_CALCULAR_IDADE('1990-11-25') as 'A comemorar';
+```
+
+![Execução de Functions](image/015.gif)
