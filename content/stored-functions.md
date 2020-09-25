@@ -28,7 +28,7 @@
 ```sql
 DELIMITER $$
 
-DROP FUNCTION IF EXISTS nome_function;
+DROP FUNCTION IF EXISTS nome_function$$
 
 CREATE FUNCTION nome_function(<parametros, ...>) RETURNS <TIPO_RETORNO>
 [<(NOT) DETERMINISTIC>]
