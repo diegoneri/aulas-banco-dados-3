@@ -8,7 +8,6 @@
 
 * [Sintaxe básica](#Sintaxe-básica "Sintaxe básica")
   * [Sintaxe de criação](#Sintaxe-de-criação "Sintaxe de criação")
-  * [Sintaxe de criação](#Sintaxe-de-criação "Sintaxe de criação")
     * [(NOT) DETERMINISTIC](#(NOT)-DETERMINISTIC "(NOT) DETERMINISTIC")
     * [Parâmetro log_bin_trust_function_creators](#Parâmetro-log_bin_trust_function_creators "Parâmetro log_bin_trust_function_creators")
   * [Sintaxe de execução](#Sintaxe-de-execução "Sintaxe de execução")
