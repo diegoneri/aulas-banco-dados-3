@@ -88,3 +88,12 @@ Nesta abordagem temos dois novos parâmetros, `--no-data` e `databases`.
 
 * `databases [bd1 ... bdN]`: indica ao script mais de uma base da dados para o backup.
 
+## Restauração
+
+Para realizar a restauração, basta inverter o sinal de entrada `>` para que o mysqldump leia a saída, usando o `<`:
+
+```sh
+
+mysqldump --user root --password=root123 mydatabase < sql.dump  
+
+```
