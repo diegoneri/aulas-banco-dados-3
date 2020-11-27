@@ -62,11 +62,8 @@ Para criar seu ambiente de trabalho, baixe as ferramentas e instale em seu compu
 
 ### 👁 Administração de Banco de dados
 
-* _Em breve_
-
-### ❗ Bancos de dados Não-Relacionais
-
-* _Em breve_
+* [👨‍🏫 _Introdução e papéis_](content/o-dba.md "Introdução e papéis")
+* [👨‍🏫 _Backup e Restauração_](content/backup-restauracao.md "Backup e Restauração")
 
 ## 🥋 Exercícios
 
